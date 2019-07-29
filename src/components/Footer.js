@@ -26,18 +26,20 @@ const FooterPage = () => {
             </MDBCol>
             <MDBCol md="3">
             <h5 className="title">About QA Cinemas</h5>
-            <a href="">About us</a>
+            <a href="/about">About us</a>
             <br></br>
-            <a href="">Screen Info</a>
+            <a href="/screeninfo">Screen Info</a>
             <br></br>
-            <a href="">Getting Here</a>
+            <a href="/gettinghere">Getting Here</a>
             
           </MDBCol>
           <MDBCol md="3">
             <h5 className="title">Other</h5>
-            <a href="">Contact us</a>
+            <a href="/contactus">Contact us</a>
             <br></br>
-            <a href="">Certifications</a>
+            <a href="/certifications">Certifications</a>
+            <br></br>
+            <a href="/placestogo">Places To Go</a>
           </MDBCol>
           <MDBCol md="3">
               <h5 className="title">Socials</h5>

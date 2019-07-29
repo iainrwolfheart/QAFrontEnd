@@ -13,13 +13,13 @@ render(){
       <a href="http://localhost:3000/">
     <img src={logo} class="logostyle"/></a>
     <Nav className="mr-auto">
-      <Nav.Link className="navhov" href="">Listings</Nav.Link>
-      <Nav.Link className="navhov" href="">Bookings</Nav.Link>
-      <Nav.Link className="navhov" href="">Screen Info</Nav.Link>
-      <Nav.Link className="navhov" href="">Discussions Board</Nav.Link>
+      <Nav.Link className="navhov" href="/listings">Listings</Nav.Link>
+      <Nav.Link className="navhov" href="/bookings">Bookings</Nav.Link>
+      <Nav.Link className="navhov" href="/screeninfo">Screen Info</Nav.Link>
+      <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link>
     </Nav>
     <Form inline className="former">
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+      <FormControl type="text" placeholder="Search Term" className="mr-sm-2" />
       <Button variant="" className="navhov">Search</Button>
     </Form>
   </Navbar>)

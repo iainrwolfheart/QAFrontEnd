@@ -6,6 +6,7 @@ import ChooseShowing from './pages/ChooseShowing';
 import ChooseTickets from './pages/ChooseTickets';
 import ListingsPage from './pages/ListingsPage';
 import FilmInfo from './pages/FilmInfo';
+import TicketBooking from './pages/TicketBooking';
 
 function App() {
   return (
@@ -18,8 +19,7 @@ function App() {
 				<Route exact path="/" component={Home} />
 				<Route path="/listings" component={ListingsPage} />
 				<Route path="/film/:filmId" component={FilmInfo} />
-				<Route path="/chooseshowing/:filmId" render={(props) => <ChooseShowing {...props} />} />
-				<Route path="/choosetickets/:filmId/:showingId" render={(props) => <ChooseTickets {...props} />} />
+				<Route path="/book" component={TicketBooking} />
 			</Router>
 		</div>
 		<div className="Footer">

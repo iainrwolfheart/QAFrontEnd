@@ -1,0 +1,29 @@
+.carouselcurrent {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  
+}
+
+.carouselfuture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 20px;
+}
+
+.homepage {
+    padding: 120px;
+}
+
+.headercurrent {
+    padding: 50px;
+    text-align: center;
+}
+
+.headerfuture {
+    text-align: center;
+    padding: 40px;
+}

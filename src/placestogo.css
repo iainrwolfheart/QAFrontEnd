@@ -1,0 +1,67 @@
+.placesheader {
+    padding-top: 130px;
+   position: relative;
+   text-align: center;
+}
+
+.places1 {
+    margin-left: 250px;
+}
+
+.places2 {
+    margin-left: 935px;
+    margin-top: -275px;
+}
+
+.places3 {
+    margin-left: 250px;
+    margin-top: 50px;
+}
+
+.places4 {
+    margin-left: 935px;
+    margin-top: -290px;
+}
+
+.luigis {
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.luigidesc {
+    margin-left: 370px;
+   margin-top: -175px;
+   font-size: 15px;
+}
+
+.tacobell{
+    margin-left: 620px;
+    margin-top: 40px;
+
+}
+
+.tacobelldesc {
+    margin-left:960px;
+    margin-top: -200px; 
+    font-size: 15px;
+}
+
+.cinebar {
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.cinebardesc {
+    margin-left: 370px;
+    margin-top: -180px;
+}
+
+.oscars {
+    margin-left: 620px;
+    margin-top: 45px;
+}
+
+.oscardesc {
+    margin-left: 960px;
+    margin-top: -175px;
+}

@@ -6,6 +6,7 @@ import About from './pages/About';
 import AppNavbar from './components/Navbar';
 import FooterPage from './components/Footer';
 import Screeninfo from './pages/Screeninfo';
+import Placestogo from './pages/Placestogo';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
 				<Route exact path="/" component={Home} />
 				<Route exact path="/about" component={About} />
 				<Route exact path="/screeninfo" component={Screeninfo} />
+				<Route exact path="/placestogo" component={Placestogo} />
 			</Router>
 		</div>
 		<div className="Footer">

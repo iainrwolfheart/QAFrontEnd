@@ -23,7 +23,7 @@ export default class FilmInfo extends React.Component {
     render () {
         return (        
             <div>
-                <img src={this.state.film.image} link to={this.state.film.route}/>
+                <img src={this.state.film.landImage}/>
                 <h1>{this.state.film.title}</h1>
                 <h2>Release Date: {this.state.film.releaseDate}, cert: {this.state.film.cert}, Runtime: {this.state.film.runTime}</h2>
                 <h3>Directed by {this.state.film.director}</h3>

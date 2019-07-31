@@ -4,6 +4,7 @@ import '../App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import FilmInfo from './FilmInfo';
+import Moment from 'moment';
 
 export default class ListingsPage extends React.Component {
     
@@ -25,12 +26,14 @@ export default class ListingsPage extends React.Component {
             });
         })
         console.log(this.state.films);
+        // console.log('MOMENT', Moment(this.state.films[0].releaseDate));
     }
 
     render() {
         return (
             <div>
                 { this.state.films.map(item => {
+                    console.log(Moment(item.releaseDate));
                     return (
                         <div key={item._id}>
                             <img src={item.portImage} />
@@ -38,13 +41,13 @@ export default class ListingsPage extends React.Component {
                             <h2>Directed by {item.director}</h2>
                             <h2>Release Date: {item.releaseDate}, cert: {item.cert}</h2>
                             <Link to={{
-								pathname: `book/chooseshowing/${item._id}`,
+								pathname: `book/chooseshowing/${item.id}`,
 								state: {
 									film: item,
 								}
 							}}><button type='button'>Book Now</button></Link>
                             <Link to={{
-                                pathname: `film/${item._id}`,
+                                pathname: `film/${item.id}`,
                                 state: {
                                     film: item,
                                 }

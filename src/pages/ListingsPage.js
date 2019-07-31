@@ -37,7 +37,12 @@ export default class ListingsPage extends React.Component {
                             <h1>{item.title}</h1>
                             <h2>Directed by {item.director}</h2>
                             <h2>Release Date: {item.releaseDate}, cert: {item.cert}</h2>
-                            <Link to={'chooseshowing/' + item._id}><button type='button'>Book Now</button></Link>
+                            <Link to={{
+								pathname: `book/chooseshowing/${item._id}`,
+								state: {
+									film: item,
+								}
+							}}><button type='button'>Book Now</button></Link>
                             <Link to={{
                                 pathname: `film/${item._id}`,
                                 state: {

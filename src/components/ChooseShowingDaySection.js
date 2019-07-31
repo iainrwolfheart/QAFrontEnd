@@ -9,7 +9,7 @@ export default class ChooseShowingDaySection extends React.Component {
 				<h1>{Moment(this.props.date).format('L')}</h1> <h2> - {Moment(this.props.date).format('dddd')}</h2>
 				{this.props.showings.map(showing =>
 					<div key={showing._id}>
-						<Link to={'/choosetickets/' + this.props.match.params.filmId + '/' + showing._id}><button>{Moment(showing.time).format('hh:mm a')}</button></Link>
+						<Link to={{pathname: '/book/choosetickets/' + this.props.match.params.filmId + '/' + showing._id, state: {film: this.props.location.state.film}}} onClick={() => this.props.updateShowing(showing)}><button>{Moment(showing.time).format('hh:mm a')}</button></Link>
 					</div>
 				)}
 			</div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 export default function Sidebar(props) {
 	return (
@@ -12,6 +13,18 @@ export default function Sidebar(props) {
 				<div>
 					<h3>Showing:</h3>
 					<h4>{props.showing.time}</h4>
+				</div>
+			}
+
+			{ props.tickets &&
+				<div>
+					<h2>Tickets</h2>
+					{ _.keys(props.tickets).map(ticketType => {
+						return props.tickets[ticketType].tickets > 0 ?
+							<div>{ticketType} - {props.tickets[ticketType].tickets} - {props.tickets[ticketType].tickets * props.tickets[ticketType].price}</div>
+						:
+							<div></div>
+					})}
 				</div>
 			}
 		</div>

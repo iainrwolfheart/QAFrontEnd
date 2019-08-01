@@ -13,9 +13,10 @@ render(){
       <a href="http://localhost:3000/">
     <img src={logo} class="logostyle"/></a>
     <Nav className="mr-auto">
-      <Nav.Link className="navhov" href="/listings">Listings</Nav.Link>
+      <Nav.Link className="navhov" href="/listings">Current Listings</Nav.Link>
+      <Nav.Link className="navhov" href="/bookings">Upcoming Movies</Nav.Link>
       <Nav.Link className="navhov" href="/bookings">Bookings</Nav.Link>
-      <Nav.Link className="navhov" href="/screeninfo">Screen Info</Nav.Link>
+      <Nav.Link className="navhov" href="/screeninfo">Screens</Nav.Link>
       <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link>
     </Nav>
     <Form inline className="former">

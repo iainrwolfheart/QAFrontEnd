@@ -1,10 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import '../App.css';
-import TellItPT from '../assets/TellItPT.jpg';
-import AnnabellePT from '../assets/AnnabellePT.jpg';
-import OnceUponPT from '../assets/OnceUponPT.jpg';
-import DoraLS from '../assets/DoraLS.jpg';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import FilmInfo from './FilmInfo';
@@ -37,7 +33,7 @@ export default class ListingsPage extends React.Component {
                 { this.state.films.map(item => {
                     return (
                         <div key={item._id}>
-                            <img src={item.image} link to={item.route} />
+                            <img src={item.portImage} />
                             <h1>{item.title}</h1>
                             <h2>Directed by {item.director}</h2>
                             <h2>Release Date: {item.releaseDate}, cert: {item.cert}</h2>

@@ -10,9 +10,10 @@ export default class ChooseSeats extends React.Component {
 		this.seatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left'};
 		this.selectedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left', background: '#000'};
 		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #b2bec3', margin: 10, float: 'left', background: '#b2bec3'};
-	
-		const tickets = _.sum(_.map(props.tickets, 'tickets'));
+		this.spaceStyle = {width: 25, height: 25, margin: 10, float: 'left'};
 		
+		const tickets = _.sum(_.map(props.tickets, 'tickets'));
+
 		this.state = {
 			seats: [],
 			tickets: tickets,
@@ -20,6 +21,18 @@ export default class ChooseSeats extends React.Component {
 		};
 
 		this.toggleSeatSelected = this.toggleSeatSelected.bind(this);
+
+
+
+		// x.seats.map((row, rowIndex) => row.map((seat, seatIndex) => {
+		// 	console.log(x.seats[rowIndex][seatIndex].location.substring(1));
+		// 	if (x.seats[rowIndex][seatIndex].location.substring(1) == 7 || x.seats[rowIndex][seatIndex].location.substring(1) == 8) {
+		// 		console.log('space');
+		// 		x.seats[rowIndex][seatIndex].type = 'space';
+		// 	}
+		// }));
+
+		// console.log(JSON.stringify(x));
 	}
 
 	componentDidMount() {
@@ -82,7 +95,11 @@ export default class ChooseSeats extends React.Component {
 								<div style={{display: 'flex', flex: '0.05', justifyContent: 'center', alignItems: 'center'}}>{row.toUpperCase()}</div>
 									<div style={{flex: '1'}}>
 										{ seatRow.map(seat => {
-											return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected}></div>
+											if (seat.type == 'seat') {
+												return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected}></div>
+											} else if (seat.type == 'space') {
+												return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.spaceStyle}></div>
+											}
 										})}
 									</div>
 								</div>

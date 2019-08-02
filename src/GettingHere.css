@@ -1,0 +1,44 @@
+.Ftext{
+    padding-top: 140px;
+   position: relative;
+   text-align:center;
+    
+}
+
+.Map {
+    margin-left: 25px;
+    position: relative;
+    padding-right: 175px;
+}
+  
+.DirButton {
+   border-radius:10px;
+   background-color:rgb(175, 0, 0);
+   border: 2px solid rgb(175, 0, 0);
+   color: white;
+   margin-left: 548px;
+   
+}
+
+.DirButton:hover{
+    background-color:rgb(207, 0, 0);
+    border: 2px solid rgb(207, 0, 0);
+}
+
+.exterior {
+    display: block;
+    margin-right: 30px;
+    margin-top:-405px;
+    float:right;
+}
+
+.address {
+    margin-left:568px;
+    margin-top: -250px;
+    position:absolute;  
+}
+
+h7{
+    margin-left: 500px;
+}
+

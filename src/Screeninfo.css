@@ -1,0 +1,74 @@
+
+.screenone {
+    padding-top: 140px;
+    
+    text-align:center;
+}
+
+.screentwo {
+    
+
+    text-align:center; 
+    margin-top: 150px;
+}
+
+.screenthree {
+    
+    text-align:center;
+    margin-top: 210px;
+
+}
+
+.screenfour {
+    
+    text-align:center;
+}
+
+.disabled1 {
+    display: block;
+    margin-left: 590px;
+    margin-top: -250px;
+    
+}
+.disabled2 {
+    display: block;
+    margin-left: 590px;
+    margin-top: -260px;
+    
+}
+
+
+.threed {
+    display: block;
+    margin-left: 590px;
+    margin-top: 30px;
+}
+
+.threedthree {
+  
+    margin-left: 550px;
+    margin-top: 100px;
+}
+
+.vip {
+    margin-left: 580px;
+    margin-top: 30px;
+}
+
+.screen1 {
+    display: block;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.cinemascreen1 {
+    display: block;
+    margin-left: 750px;
+    margin-top: -400px;
+}
+
+.cinemascreen2 {
+    display: block;
+    margin-left: 750px;
+    margin-top: -400px;
+}

@@ -6,6 +6,11 @@ import About from './pages/About';
 import AppNavbar from './components/Navbar';
 import FooterPage from './components/Footer';
 import Screeninfo from './pages/Screeninfo';
+import ChooseShowing from './pages/ChooseShowing';
+import ChooseTickets from './pages/ChooseTickets';
+import ListingsPage from './pages/ListingsPage';
+import FilmInfo from './pages/FilmInfo';
+import TicketBooking from './pages/TicketBooking';
 
 function App() {
 	return (
@@ -28,13 +33,13 @@ function App() {
 					<Route exact path="/" component={Home} />
 					<Route exact path="/about" component={About} />
 					<Route exact path="/screeninfo" component={Screeninfo} />
+          <Route path="/listings" component={ListingsPage} />
+          <Route path="/film/:filmId" component={FilmInfo} />
+          <Route path="/book" component={TicketBooking} />
 				</Router>
 			</div >
 			<div className="Footer">
 				<FooterPage />
 			</div>
-		</div>
-  );
-}
 
 export default App;

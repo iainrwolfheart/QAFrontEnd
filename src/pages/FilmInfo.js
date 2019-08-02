@@ -29,7 +29,7 @@ export default class FilmInfo extends React.Component {
                 <h3>Directed by {this.state.film.director}</h3>
                 <h4>Cast: {this.state.film.cast}</h4>
                 <h5>{this.state.film.description}</h5>
-                <Link to={'chooseshowing/' + this.state.film._id}><button type='button'>Book Now</button></Link>
+                <Link to={'chooseshowing/' + this.state.film.id}><button type='button'>Book Now</button></Link>
                 </div>
         );
     }

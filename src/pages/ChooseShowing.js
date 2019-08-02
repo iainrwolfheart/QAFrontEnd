@@ -2,63 +2,19 @@ import React from 'react';
 import _ from 'lodash';
 import Moment from 'moment';
 import ChooseShowingDaySection from '../components/ChooseShowingDaySection';
+import axios from 'axios';
 
 export default class ChooseShowing extends React.Component {
 	constructor() {
 		super();
 
 		this.state = {
-			showings: [
-				{
-					_id: 'jfegjeigjeigjei2232',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-25 12:00',
-					screenId: 'efjjg93jg93t9ei9'
-				},
-				{
-					_id: 'keogewohjrgkowkgow',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-25 15:30',
-					screenId: 'efjjg93jg93t9ei9'
-				},
-				{
-					_id: 'keogewohjrgkohkgow',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-25 17:00',
-					screenId: 'gkpgkweogkwkfo'
-				},
-				{
-					_id: 'keogewodjrgkowkgow',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-25 18:20',
-					screenId: 'egjwjgweoijgw'
-				},
-				{
-					_id: 'jfegjeigjeigjei2232',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-26 12:00',
-					screenId: 'efjjg93jg93t9ei9'
-				},
-				{
-					_id: 'keogewohjrgkowkdow',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-26 15:30',
-					screenId: 'efjjg93jg93t9ei9'
-				},
-				{
-					_id: 'keogewohjrgkowggow',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-26 17:00',
-					screenId: 'gkpgkweogkwkfo'
-				},
-				{
-					_id: 'keogewohjrgjowkgow',
-					filmId: 'fjeiogsiogewfeffe',
-					time: '2019-07-26 18:20',
-					screenId: 'egjwjgweoijgw'
-				},
-			]
+			showings: []
 		}
+	}
+
+	componentDidMount() {
+		axios.get('http://localhost:8000/film/' + this.props.match.params.filmId + '/showings').then(response => this.setState({ showings: response.data }));
 	}
 
 	render() {

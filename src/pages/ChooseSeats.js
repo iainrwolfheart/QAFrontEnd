@@ -10,7 +10,7 @@ export default class ChooseSeats extends React.Component {
 		this.seatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left', display: 'flex', justifyContent: 'center'};
 		this.selectedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left', background: '#000', display: 'flex', justifyContent: 'center', color: '#FFFFFF'};
 		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #b2bec3', margin: 10, float: 'left', background: '#b2bec3'};
-		this.spaceStyle = {width: 25, height: 25, margin: 10, float: 'left'};
+		this.spaceStyle = {width: 25, height: 25, margin: 10, float: 'left', border: '1px solid rgba(0, 0, 0, 0)'};
 		
 		const tickets = _.sum(_.map(props.tickets, 'tickets'));
 
@@ -36,7 +36,7 @@ export default class ChooseSeats extends React.Component {
 	}
 
 	componentDidMount() {
-		Axios.get('http://localhost:8000/screens/5d417b7be7179a064fab4810').then(response => {
+		Axios.get('http://localhost:8000/screens/' + this.props.location.state.showing.screenId).then(response => {
 			const rows = response.data.seats.map(row => row.map(seat => ({...JSON.parse(seat), selected: false, booked: false})));
 			this.setState({
 				seats: rows

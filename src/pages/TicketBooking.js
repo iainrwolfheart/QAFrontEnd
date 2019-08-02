@@ -4,6 +4,7 @@ import ChooseShowing from './ChooseShowing';
 import ChooseTickets from './ChooseTickets';
 import Sidebar from './Sidebar';
 import ChooseSeats from './ChooseSeats';
+import Confirmation from './Confirmation';
 
 export default class TicketBooking extends React.Component {
 	constructor(props) {
@@ -32,6 +33,12 @@ export default class TicketBooking extends React.Component {
 				exact: true,
 				main: () => ChooseSeats,
 				sidebar: (props) => <Sidebar {...props} showing={this.state.showing} tickets={this.state.tickets} />
+			},
+			{
+				path: '/book/confirm',
+				exact: true,
+				main: () => Confirmation,
+				sidebar: (props) => null
 			}
 		];
 	}

@@ -1,7 +1,8 @@
 import React from 'react';
 import update from 'immutability-helper';
 import _ from 'lodash';
-import Axios from 'axios';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class ChooseSeats extends React.Component {
 	constructor(props) {
@@ -9,7 +10,7 @@ export default class ChooseSeats extends React.Component {
 
 		this.seatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left', display: 'flex', justifyContent: 'center'};
 		this.selectedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left', background: '#000', display: 'flex', justifyContent: 'center', color: '#FFFFFF'};
-		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #b2bec3', margin: 10, float: 'left', background: '#b2bec3'};
+		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #b2bec3', margin: 10, float: 'left', background: '#b2bec3', display: 'flex', justifyContent: 'center',};
 		this.spaceStyle = {width: 25, height: 25, margin: 10, float: 'left', border: '1px solid rgba(0, 0, 0, 0)'};
 		
 		const tickets = _.sum(_.map(props.tickets, 'tickets'));
@@ -36,10 +37,14 @@ export default class ChooseSeats extends React.Component {
 	}
 
 	componentDidMount() {
-		Axios.get('http://localhost:8000/screens/' + this.props.location.state.showing.screenId).then(response => {
-			const rows = response.data.seats.map(row => row.map(seat => ({...JSON.parse(seat), selected: false, booked: false})));
-			this.setState({
-				seats: rows
+		axios.get('http://localhost:8000/screens/' + this.props.location.state.showing.screenId).then(response => {
+			axios.get('http://localhost:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
+				const bookedSeats = _.flatMap(_.map(bookingsResponse.data, 'seatIds'), seatIds => seatIds);
+				const rows = response.data.seats.map(row => row.map(seat => ({...JSON.parse(seat), selected: false, booked: _.includes(bookedSeats, JSON.parse(seat).location)})));
+				this.setState({
+					seats: rows
+				});
+
 			});
 		});
 	}
@@ -96,7 +101,11 @@ export default class ChooseSeats extends React.Component {
 									<div style={{flex: '1'}}>
 										{ seatRow.map(seat => {
 											if (seat.type == 'seat') {
-												return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected}>{seat.location.substring(1)}</div>
+												if (!seat.booked) {
+													return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected}>{seat.location.substring(1)}</div>
+												} else {
+													return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.bookedSeatStyle}>{seat.location.substring(1)}</div>
+												}
 											} else if (seat.type == 'space') {
 												return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.spaceStyle}></div>
 											}
@@ -105,18 +114,7 @@ export default class ChooseSeats extends React.Component {
 								</div>
 						);
 					})}
-					{/* { this.rows.map(row => {
-						return (
-							<div style={{display: 'flex'}}>
-								<div style={{display: 'flex', flex: '0.05', justifyContent: 'center', alignItems: 'center'}}>{row}</div>
-								<div style={{flex: '1'}}>
-								{ this.state.seats.map(seat => {
-									return <div data-row={row} data-seat={seat.seat} data-selected={seat.selected} style={{width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left'}} onClick={this.toggleSeatSelected}></div>
-								})}
-								</div>
-							</div>
-						)
-					})} */}
+					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats}}}><button type='button'>Confirm Booking</button></Link>
 				</div>
 			</div>
 		);

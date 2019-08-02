@@ -5,8 +5,10 @@ import Home from './pages/Home';
 import About from './pages/About';
 import AppNavbar from './components/Navbar';
 import FooterPage from './components/Footer';
-import Screeninfo from './pages/Screeninfo';
+import Screens from './pages/Screeninfo';
 import Placestogo from './pages/Placestogo';
+import discussionsboard from './pages/DiscussionsBoard';
+import FilmInfo from './pages/FilmInfo';
 
 function App() {
   return (
@@ -28,8 +30,10 @@ function App() {
 			<Router>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/about" component={About} />
-				<Route exact path="/screeninfo" component={Screeninfo} />
+				<Route exact path="/screens" component={Screens} />
 				<Route exact path="/placestogo" component={Placestogo} />
+				<Route exact path="/discussionsboard" component={discussionsboard} />
+				<Route exact path="/film/:filmId" component={FilmInfo} />
 			</Router>
 		</div>
 		<div className="Footer">

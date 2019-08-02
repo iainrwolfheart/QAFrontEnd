@@ -1,0 +1,137 @@
+.discussheader {
+    text-align: center;
+    padding-top:130px;
+}
+
+.post {
+    border-radius: 20px;
+    width: 600px;
+    height: 100px;
+    margin-left: 335px;
+    margin-top:10px;
+    padding: 10px;
+}
+
+.post:focus {
+    outline:none;
+}
+
+.submitpost {
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 570px;
+    margin-top: 10px;
+    background-color:rgb(175, 0, 0);
+    border-color:rgb(175, 0, 0);
+    color:white;
+}
+
+.submitpost:focus{
+    outline:none;
+}
+
+.submitpost:hover{
+    background-color:rgb(207, 0, 0);
+}
+
+
+.username {
+    border-radius: 20px;
+    margin-left: 10px;
+    padding:10px;
+    height:30px;
+    margin-bottom: 10px;
+}
+
+.username:focus{
+    outline:none;
+}
+
+.userlabel {
+    margin-left: 200px;
+    margin-top: 10px;
+}
+
+.table {
+margin-top: 20px;
+margin-left: 30px;
+}
+
+.rate-area {
+    margin-top: -210px;
+    margin-left: 865px;
+    border-style: none;
+    position: absolute;
+}
+
+.rate-area:not(:checked) > input {
+    position:absolute;
+    visibility: hidden;
+    clip:rect(0,0,0,0);
+}
+
+.rate-area:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:lightgrey;
+    text-shadow:1px 1px #bbb;
+}
+
+.rate-area:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate-area > input:checked ~ label {
+    color:rgb(207, 0, 0);
+    text-shadow:1px 1px rgb(175, 0, 0);
+    font-size:200% !important;
+}
+
+.rate-area:not(:checked) > label:hover,
+.rate-area:not(:checked) > label:hover ~ label {
+    color: rgb(207, 0, 0);
+    
+}
+
+.rate-area > input:checked + label:hover,
+.rate-area > input:checked + label:hover ~ label,
+.rate-area > input:checked ~ label:hover,
+.rate-area > input:checked ~ label:hover ~ label,
+.rate-area > label:hover ~ input:checked ~ label {
+    color: rgb(207, 0, 0);
+    text-shadow: 1px 1px rgb(175, 0, 0);   
+    
+}
+
+.rate-area > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+.rating {
+   margin-left: 20px;
+}
+
+.movielabel {
+    margin-left: 20px;
+}
+
+.moviename {
+    margin-left: 10px;
+    border-radius: 20px;
+    padding:10px;
+    height:30px;
+}
+
+.moviename:focus {
+    outline:none;
+}
+

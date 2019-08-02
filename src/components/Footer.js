@@ -28,7 +28,7 @@ const FooterPage = () => {
             <h5 className="title">About QA Cinemas</h5>
             <a href="/about">About us</a>
             <br></br>
-            <a href="/screeninfo">Screen Info</a>
+            <a href="/screens">Screens</a>
             <br></br>
             <a href="/gettinghere">Getting Here</a>
             

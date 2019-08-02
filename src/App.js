@@ -11,6 +11,7 @@ import discussionsboard from './pages/DiscussionsBoard';
 import FilmInfo from './pages/FilmInfo';
 import ListingsPage from './pages/ListingsPage';
 import TicketBooking from './pages/TicketBooking';
+import certifications from './pages/certifications';
 
 function App() {
   return (
@@ -35,9 +36,10 @@ function App() {
 				<Route exact path="/screens" component={Screens} />
 				<Route exact path="/placestogo" component={Placestogo} />
 				<Route exact path="/discussionsboard" component={discussionsboard} />
-        <Route path="/listings" component={ListingsPage} />
+				<Route path="/listings" component={ListingsPage} />
 				<Route exact path="/film/:filmId" component={FilmInfo} />
-        <Route path="/book" component={TicketBooking} />
+				<Route path="/book" component={TicketBooking} />
+				<Route exact path="/certifications" component={certifications} />
 			</Router>
 		</div>
 		<div className="Footer">

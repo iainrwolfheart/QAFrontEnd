@@ -9,10 +9,7 @@ import Screens from './pages/Screeninfo';
 import Placestogo from './pages/Placestogo';
 import discussionsboard from './pages/DiscussionsBoard';
 import FilmInfo from './pages/FilmInfo';
-import ChooseShowing from './pages/ChooseShowing';
-import ChooseTickets from './pages/ChooseTickets';
 import ListingsPage from './pages/ListingsPage';
-import FilmInfo from './pages/FilmInfo';
 import TicketBooking from './pages/TicketBooking';
 
 function App() {

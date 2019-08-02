@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import AppNavbar from './components/Navbar';
@@ -9,6 +9,11 @@ import Screens from './pages/Screeninfo';
 import Placestogo from './pages/Placestogo';
 import discussionsboard from './pages/DiscussionsBoard';
 import FilmInfo from './pages/FilmInfo';
+import ChooseShowing from './pages/ChooseShowing';
+import ChooseTickets from './pages/ChooseTickets';
+import ListingsPage from './pages/ListingsPage';
+import FilmInfo from './pages/FilmInfo';
+import TicketBooking from './pages/TicketBooking';
 
 function App() {
   return (
@@ -33,7 +38,9 @@ function App() {
 				<Route exact path="/screens" component={Screens} />
 				<Route exact path="/placestogo" component={Placestogo} />
 				<Route exact path="/discussionsboard" component={discussionsboard} />
+        <Route path="/listings" component={ListingsPage} />
 				<Route exact path="/film/:filmId" component={FilmInfo} />
+        <Route path="/book" component={TicketBooking} />
 			</Router>
 		</div>
 		<div className="Footer">

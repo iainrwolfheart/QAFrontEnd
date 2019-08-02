@@ -31,10 +31,12 @@ componentDidMount() {
     render() {
         return (
 
+
             <div>
                 <h1 className="headercurrent">Current Listings</h1>  
             <Carousel style={{height: '470px', width:'800px'}} className="carouselcurrent">
         { this.state.films.map(item => {
+
 
 const cutOff = moment("2019-08-18", "YYYY-MM-DD");
 const relDate = moment(item.releaseDate, "YYYY-MM-DD");
@@ -46,11 +48,12 @@ if (curList) {
                  
                     <Carousel.Item className="cara">
                     <Link to={{
-                                pathname: `film/${item._id}`,
+                                pathname: `film/${item.id}`,
                                 state: {
                                     film: item,
                                 }
                             }}>
+
                         <img
                             className="d-block w-100"
                             src={item.landImage}
@@ -75,7 +78,7 @@ if (futList) {
                  
                     <Carousel.Item className="cara">
                     <Link to={{
-                                pathname: `film/${item._id}`,
+                                pathname: `film/${item.id}`,
                                 state: {
                                     film: item,
                                 }

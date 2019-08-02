@@ -2,6 +2,7 @@
     display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 30px;
   width: 50%;
   
 }
@@ -19,11 +20,11 @@
 }
 
 .headercurrent {
-    padding: 50px;
+    padding-top: 140px;
     text-align: center;
 }
 
 .headerfuture {
     text-align: center;
-    padding: 40px;
+    padding: 10px;
 }

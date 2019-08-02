@@ -7,7 +7,7 @@
 
 .mr-auto{
     position: absolute;
-    left:13%;
+    left:12%;
 }
 
 .former{
@@ -40,8 +40,8 @@
 .mr-auto > .navhov{
     border-radius:4px;
     color:white;
-    margin:33px;
-    font-size:18px;
+    margin:15px;
+    font-size:16px;
 }
 
 
@@ -98,4 +98,30 @@ footer{
        background: rgb(105, 105, 105);
        color: black;
    }
+
+
+.booknowbutton {
+    background-color:rgb(175, 0, 0);
+    border-radius: 10px;
+    border-color: rgb(175, 0, 0);
+    outline: none;
+    color: white;
+    padding: 10px;
+}
+
+.booknowbutton:hover {
+    background-color:rgb(207, 0, 0);
+    border-radius: 10px;
+    border-color: rgb(207, 0, 0);
+    outline: none
+}
+
+.info {
+    margin-left: 20px;
+    padding-top: 140px;
+}
+
+.filmtitle {
+    margin-top: 20px;
+}
 

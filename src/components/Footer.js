@@ -28,14 +28,14 @@ const FooterPage = () => {
             <h5 className="title">About QA Cinemas</h5>
             <a href="/about">About us</a>
             <br></br>
-            <a href="/screeninfo">Screen Info</a>
+            <a href="/screens">Screens</a>
             <br></br>
-            <a href="/gettinghere">Getting Here</a>
+            <a href="/GettingHere">Getting Here</a>
             
           </MDBCol>
           <MDBCol md="3">
             <h5 className="title">Other</h5>
-            <a href="/contactus">Contact us</a>
+            <a href="/ContactUs">Contact us</a>
             <br></br>
             <a href="/certifications">Certifications</a>
             <br></br>

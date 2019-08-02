@@ -7,20 +7,27 @@ import FormControl from 'react-bootstrap/FormControl';
 import logo from '../assets/QALogo.png';
 
 class AppNavbar extends React.Component{
+
+
+
+
+
+  
 render(){
     return(
     <Navbar bg="dark" variant="dark" className="fixed-top">
       <a href="http://localhost:3000/">
     <img src={logo} class="logostyle"/></a>
     <Nav className="mr-auto">
-      <Nav.Link className="navhov" href="/listings">Listings</Nav.Link>
+      <Nav.Link className="navhov" href="/currentlistings">Current Listings</Nav.Link>
+      <Nav.Link className="navhov" href="/upcomingmovies">Upcoming Movies</Nav.Link>
       <Nav.Link className="navhov" href="/bookings">Bookings</Nav.Link>
-      <Nav.Link className="navhov" href="/screeninfo">Screen Info</Nav.Link>
+      <Nav.Link className="navhov" href="/screens">Screens</Nav.Link>
       <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link>
     </Nav>
     <Form inline className="former">
       <FormControl type="text" placeholder="Search Term" className="mr-sm-2" />
-      <Button variant="" className="navhov">Search</Button>
+      <Button variant="" className="navhov" type="submit">Search</Button>
     </Form>
   </Navbar>)
 }

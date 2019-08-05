@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default class ListingsPage extends React.Component {
+export default class ListingsPage1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,14 +33,14 @@ export default class ListingsPage extends React.Component {
     render() {
         return (
             <div>
-                <h1 className = "center" >Current Listings</h1>
+                <h1 className = "center" >Future Listings</h1>
                 {this.state.films.map((item) => {
                     const cutOff = moment("2019-08-18", "YYYY-MM-DD");
                     const relDate = moment(item.releaseDate, "YYYY-MM-DD");
                     const futList = relDate.isAfter(cutOff);
                     const curList = relDate.isBefore(cutOff);
 
-                    if (curList) {
+                    if (futList) {
                     return (
                         
                         <Container key={item.id}>

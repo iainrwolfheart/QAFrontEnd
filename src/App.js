@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './pages/listings.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -12,6 +13,7 @@ import FilmInfo from './pages/FilmInfo';
 import ListingsPage from './pages/ListingsPage';
 import TicketBooking from './pages/TicketBooking';
 import certifications from './pages/certifications';
+import ListingsPage1 from './pages/upcomings';
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
 				<Route exact path="/screens" component={Screens} />
 				<Route exact path="/placestogo" component={Placestogo} />
 				<Route exact path="/discussionsboard" component={discussionsboard} />
+				<Route exact path="/upcomings" component={ListingsPage1} />
 				<Route path="/listings" component={ListingsPage} />
 				<Route exact path="/film/:filmId" component={FilmInfo} />
 				<Route path="/book" component={TicketBooking} />

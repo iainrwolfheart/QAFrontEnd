@@ -30,8 +30,12 @@ export default class FilmInfo extends React.Component {
                 <h3>Directed by {this.state.film.director}</h3>
                 <h4>Cast: {this.state.film.cast}</h4>
                 <h5>{this.state.film.description}</h5>
-                <Link to={'book/chooseshowing/' + this.state.film.id}><button type='button' className="booknowbutton">Book Now</button></Link>
-                
+                <Link to={{
+                    pathname: `/book/chooseshowing/${this.state.film.id}`, 
+                    state: {
+                        film : this.state.film,
+                    }
+                }}><button type='button' className="booknowbutton">Book Now</button></Link>
                 </div>
         );
     }

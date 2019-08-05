@@ -20,7 +20,7 @@ render(){
     <img src={logo} class="logostyle"/></a>
     <Nav className="mr-auto">
       <Nav.Link className="navhov" href="/listings">Current Listings</Nav.Link>
-      <Nav.Link className="navhov" href="/upcomingmovies">Upcoming Movies</Nav.Link>
+      <Nav.Link className="navhov" href="/upcomings">Future Listings</Nav.Link>
       <Nav.Link className="navhov" href="/bookings">Bookings</Nav.Link>
       <Nav.Link className="navhov" href="/screens">Screens</Nav.Link>
       <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link>

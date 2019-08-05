@@ -31,6 +31,7 @@ export default class FilmInfo extends React.Component {
                 <h4>Cast: {this.state.film.cast}</h4>
                 <h5>{this.state.film.description}</h5>
                 <Link to={'book/chooseshowing/' + this.state.film.id}><button type='button' className="booknowbutton">Book Now</button></Link>
+                
                 </div>
         );
     }

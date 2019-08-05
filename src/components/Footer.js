@@ -40,6 +40,8 @@ const FooterPage = () => {
             <a href="/certifications">Certifications</a>
             <br></br>
             <a href="/placestogo">Places To Go</a>
+            <br></br>
+            <a href="/upcomings">Future Listings</a>
           </MDBCol>
           <MDBCol md="3">
               <h5 className="title">Socials</h5>

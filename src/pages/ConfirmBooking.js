@@ -125,7 +125,7 @@ export default class ConfirmBooking extends React.Component {
 					:
 						<div></div>
 				})}
-				<h4>Seats: {seatIds}</h4>
+				<h4>Seats: {seatIds.map((seatID, index) => (index > 0) ? ', ' + seatID : '' + seatID )}</h4>
 				<PayPalSDKWrapper currency="GBP" clientId="AQtbSu0EwyTrNloFld2CCjnI-pIg3EQ7nAycqL3d0cXYKr7y7MPnPl10nlkAbn_Vc3jiq20o5bRuKefS">
 					<SmartPaymentButtons
 						createOrder={(data, actions) => this.handleCreateBooking(data, actions)}

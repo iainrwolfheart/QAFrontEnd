@@ -4,7 +4,7 @@ import ChooseShowing from './ChooseShowing';
 import ChooseTickets from './ChooseTickets';
 import Sidebar from './Sidebar';
 import ChooseSeats from './ChooseSeats';
-import Confirmation from './Confirmation';
+import ConfirmBooking from './ConfirmBooking';
 
 export default class TicketBooking extends React.Component {
 	constructor(props) {
@@ -37,7 +37,7 @@ export default class TicketBooking extends React.Component {
 			{
 				path: '/book/confirm',
 				exact: true,
-				main: () => Confirmation,
+				main: () => ConfirmBooking,
 				sidebar: (props) => null
 			}
 		];

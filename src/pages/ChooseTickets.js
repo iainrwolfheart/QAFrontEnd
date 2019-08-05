@@ -47,7 +47,7 @@ export default class ChooseTickets extends React.Component {
 						}
 					</div>
 				)}
-				<Link to={{pathname: '/book/chooseseats/' + this.props.match.params.filmId + '/' + this.props.match.params.showingId, state: {film: this.props.location.state.film, showing: this.props.location.state.showing}}} onClick={() => this.props.updateTickets(this.state)}><button type='button'>Book Now</button></Link>
+				<Link to={{pathname: '/book/chooseseats/' + this.props.match.params.filmId + '/' + this.props.match.params.showingId, state: {film: this.props.location.state.film, showing: this.props.location.state.showing, tickets: this.state}}} onClick={() => this.props.updateTickets(this.state)}><button type='button'>Book Now</button></Link>
 			</div>
 		);
 	}

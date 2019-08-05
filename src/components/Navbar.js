@@ -21,17 +21,12 @@ render(){
     <img src={logo} class="logostyle"/></a>
     <Nav className="mr-auto">
       <Link to="/listings"><Nav.Link className="navhov" href="/listings">Current Listings</Nav.Link></Link>
-      {/* <Nav.Link className="navhov" href="/listings">Current Listings</Nav.Link> */}
       <Link to="/upcomings"><Nav.Link className="navhov" href="/upcomings">Future Listings</Nav.Link></Link>
-      {/* <Nav.Link className="navhov" href="/upcomings">Future Listings</Nav.Link> */}
-      <Link to="/ticketbooking"><Nav.Link className="navhov" href="/ticketbooking">Bookings</Nav.Link></Link>
-      {/* <Nav.Link className="navhov" href="/ticketbooking">Bookings</Nav.Link> */}
+      {/* <Link to="/ticketbooking"><Nav.Link className="navhov" href="/ticketbooking">Bookings</Nav.Link></Link> */}
       <Link to="/screens"><Nav.Link className="navhov" href="/screens">Screens</Nav.Link></Link>
-      {/* <Nav.Link className="navhov" href="/screens">Screens</Nav.Link> */}
       <Link to="/discussionsboard"> <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link></Link>
-      {/* <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link> */}
-    </Nav>
-    <Form inline className="former">
+      </Nav>
+      <Form inline className="former">
       <FormControl type="text" placeholder="Search Term" className="mr-sm-2" />
       <Button variant="" className="navhov" type="submit">Search</Button>
     </Form>

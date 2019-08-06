@@ -1,9 +1,8 @@
 import React from 'react';
-import './listings.css';
+import '../listings.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-import FilmInfo from './FilmInfo';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

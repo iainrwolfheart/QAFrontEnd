@@ -58,6 +58,8 @@ export default class TicketBooking extends React.Component {
 	render() {
 		return (
 			<div style={{ display: 'flex', flex: 1 }}>
+
+				
 				<div className="Sidebar" style={{background: '#F2F2F2', flex: 0.3}}>
 					{this.routes.map((route, index) => (
 						<Route

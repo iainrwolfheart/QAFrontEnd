@@ -1,0 +1,152 @@
+.seats {
+    padding-top: 140px;
+    margin-left: 120px
+}
+
+.sidebar {
+    padding-top: 140px; 
+    height:100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: black;
+    
+}
+
+.seat {
+    cursor: pointer;
+}
+
+.confbutton {
+    border-radius: 10px;
+    background-color: rgb(175, 0, 0);
+    border-color: rgb(175, 0, 0);
+    margin-top: 30px;
+    color: white;
+    padding: 10px;
+    margin-left: 15px;
+}
+
+.confbutton:hover {
+    border-radius: 10px;
+    background-color: rgb(207, 0, 0);
+    border-color: rgb(207, 0, 0);
+    margin-top: 30px;
+    color: white;
+    padding: 10px;
+    outline: none;
+    
+}
+
+.times {
+    padding-top: 100px;
+}
+
+.timeblock {
+   font-size: 14px;
+    border-radius: 10px;
+    background-color: rgb(175, 0, 0);
+    border-color: rgb(175, 0, 0);
+    color: white;
+    margin-left: 5px;
+}
+
+.timeblock:hover{
+    border-radius: 10px;
+    background-color: rgb(207, 0, 0);
+    border-color: rgb(207, 0, 0);
+    color: white;
+    outline: none;
+}
+
+.dateandtime {
+    padding-top: 35px;
+}
+
+.minus {
+    background-color: rgb(175, 0, 0);
+    border-radius: 10px;
+    width:30px;
+    color: white;
+    border-color: rgb(175, 0, 0);
+    outline: none;
+}
+
+.minus:hover{
+    background-color: rgb(207, 0, 0);
+    border-color: rgb(207, 0, 0);
+}
+
+.choosetickets {
+    padding-top: 140px;
+    margin-left: 20px;
+}
+
+.ticketamount {
+    border-radius: 10px;
+    margin-left: 10px;
+    outline: none;
+}
+
+.plus {
+    background-color: rgb(175, 0, 0);
+    border-radius: 10px;
+    width:30px;
+    margin-left: 10px;
+    border-color: rgb(175, 0, 0);
+    color: white;
+    outline:none;
+}
+
+.plus:hover{
+    background-color: rgb(207, 0, 0);
+    border-color: rgb(175, 0, 0);
+    
+}
+
+.tickettype {
+    margin-bottom: 20px;
+}
+
+.price {
+    margin-bottom: 10px;
+}
+
+.bookbutton {
+    background-color: rgb(175, 0, 0);
+    border-radius: 10px;
+    border-color: rgb(175, 0, 0);
+    color: white;
+    width: 100px;
+    height: 50px;
+}
+
+.bookbutton:hover {
+    background-color: rgb(207, 0, 0);
+    border-color: rgb(207, 0, 0);
+    
+}
+
+.bookbutton:focus {
+    outline:none;
+}
+
+.movieinfo {
+    margin-top: 10px;
+}
+
+.movietitle {
+    margin-top: 20px;
+}
+
+.ticketssidebar {
+    margin-top: 60px;
+}
+
+.confinfo {
+    padding-top: 130px;
+    margin-left: 30px;
+}
+
+.conftitle {
+    margin-top: 20px;
+}

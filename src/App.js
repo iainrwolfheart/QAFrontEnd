@@ -15,11 +15,6 @@ import TicketBooking from './pages/TicketBooking';
 import certifications from './pages/certifications';
 import ListingsPage1 from './pages/upcomings';
 
-function someShit() {
-	return (
-		<div>8===D</div>
-	);
-}
 
 function App() {
 	return (

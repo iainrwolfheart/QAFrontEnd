@@ -36,6 +36,10 @@
      border: 2px solid rgb(207, 0, 0);
  } 
 
+ .DirButton1:focus {
+   outline:none;
+ }
+
  .caro1 {
   padding: 50px;
   float: right;

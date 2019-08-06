@@ -25,10 +25,14 @@
     border: 2px solid rgb(207, 0, 0);
 }
 
+.DirButton:focus{
+    outline:none;
+}
+
 .exterior {
     display: block;
     margin-right: 30px;
-    margin-top:-405px;
+    margin-top:-388px;
     float:right;
 }
 

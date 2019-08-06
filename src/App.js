@@ -13,6 +13,8 @@ import ListingsPage from './pages/ListingsPage';
 import TicketBooking from './pages/TicketBooking';
 import certifications from './pages/certifications';
 import ListingsPage1 from './pages/upcomings';
+import ContactUs from './pages/ContactUs';
+import GettingHere from './pages/GettingHere';
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
 				<Route exact path="/film/:filmId" component={FilmInfo} />
 				<Route path="/book" component={TicketBooking} />
 				<Route exact path="/certifications" component={certifications} />
+				<Route exact path="/GettingHere" component={GettingHere} />
+				<Route exact path="/contactus" component={ContactUs} />
 			</Router>
 		</div>
 		<div className="Footer">

@@ -33,9 +33,11 @@ function App() {
 					<Route exact path="/upcomings" component={ListingsPage1} />
 					<Route path="/listings" component={ListingsPage} />
 					<Route exact path="/film/:filmId" component={FilmInfo} />
-					<Route path="/ticketbooking" component={TicketBooking} />
 					<Route exact path="/certifications" component={certifications} />
 					<Route path="/book" component={TicketBooking} />
+					<Route exact path="/contactus" component={ContactUs} />
+					<Route exact path="/gettinghere" component={GettingHere} />
+				
 				</div>
 				<div className="Footer">
 						<FooterPage />

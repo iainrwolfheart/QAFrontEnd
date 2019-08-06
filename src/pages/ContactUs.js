@@ -16,6 +16,7 @@ export default class ContactUs extends React.Component {
     email: "",
     subject: "",
     yourMessage: "",
+    text: "Submit"
   };
 }
 
@@ -31,9 +32,13 @@ export default class ContactUs extends React.Component {
         console.log(result);
       });
   }
+
+  changeText = (text) => {
+    this.setState({ text });
+  }
    
   render() {
-    const {name, email, subject, yourMessage} = this.state;
+    const {name, email, subject, yourMessage, text} = this.state;
     return (
         <div className="ContactPadding">
     <MDBContainer>
@@ -91,7 +96,7 @@ export default class ContactUs extends React.Component {
         />
         <div>
         <br />
-        <button className="DirButton1">Submit</button>
+        <button class="DirButton1" onClick={ () => { this.changeText("Sent")}  }> {text} </button>
         </div>
       </form>
       </MDBCol>

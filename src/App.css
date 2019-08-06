@@ -40,7 +40,7 @@
 .mr-auto > .navhov{
     border-radius:4px;
     color:white;
-    margin:28px;
+    margin:34px;
     font-size:16px;
 }
 
@@ -72,9 +72,9 @@ footer{
 }
 
 .fa {
-    padding: 15px;
-    font-size: 30px;
+    font-size: 20px;
     width: 45px;
+    padding:11px;
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
@@ -126,10 +126,6 @@ footer{
     margin-top: 20px;
 }
 
-.Content {
-    padding-top: 120px;
-}
-
 .mr-sm-2::placeholder {
-    font-size: 16px;
+    font-size: 14px;
 }

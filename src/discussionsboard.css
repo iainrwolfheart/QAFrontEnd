@@ -1,5 +1,6 @@
 .discussheader {
     text-align: center;
+    padding-top: 130px;
 }
 
 .post {
@@ -62,8 +63,8 @@ margin-left: 30px;
 }
 
 .rate-area {
-    margin-top: -210px;
-    margin-left: 865px;
+    margin-top: -197px;
+    margin-left: 855px;
     border-style: none;
     position: absolute;
 }

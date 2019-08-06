@@ -22,7 +22,6 @@ render(){
     <Nav className="mr-auto">
       <Link to="/listings"><Nav.Link className="navhov" href="/listings">Current Listings</Nav.Link></Link>
       <Link to="/upcomings"><Nav.Link className="navhov" href="/upcomings">Future Listings</Nav.Link></Link>
-      {/* <Link to="/ticketbooking"><Nav.Link className="navhov" href="/ticketbooking">Bookings</Nav.Link></Link> */}
       <Link to="/screens"><Nav.Link className="navhov" href="/screens">Screens</Nav.Link></Link>
       <Link to="/discussionsboard"> <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link></Link>
       </Nav>

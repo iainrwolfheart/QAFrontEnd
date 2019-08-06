@@ -3,13 +3,12 @@ import '../listings.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-import FilmInfo from '../pages/FilmInfo';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default class ListingsPage extends React.Component {
+export default class ListingsPage1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,14 +32,14 @@ export default class ListingsPage extends React.Component {
     render() {
         return (
             <div>
-                <h1 className = "center" >Current Listings</h1>
+                <h1 className = "center" >Future Listings</h1>
                 {this.state.films.map((item) => {
                     const cutOff = moment("2019-08-18", "YYYY-MM-DD");
                     const relDate = moment(item.releaseDate, "YYYY-MM-DD");
                     const futList = relDate.isAfter(cutOff);
                     const curList = relDate.isBefore(cutOff);
 
-                    if (curList) {
+                    if (futList) {
                     return (
                         
                         <Container key={item.id}>
@@ -54,8 +53,8 @@ export default class ListingsPage extends React.Component {
                                     <br></br>
                                     <h1>{item.title}</h1>
                                     <h3>Directed by: {item.director}</h3>
-                                    <h3>Release Date: {relDate.format('DD/MM/YYYY')}, Cert: {item.cert}</h3>
-                                    <Link to={{pathname:`book/chooseshowing/${item.id}`, state: {film: item}}}><button className = "booknow" type='button'>Book Now</button></Link>
+                                    <h3>Release Date: {relDate.format('DD/MM/YYYY')}, cert: {item.cert}</h3>
+                                    <Link to={'chooseshowing/' + item.id}><button className = "booknow" type='button'>Book Now</button></Link>
                                     <Link to={{
                                         pathname: `film/${item.id}`,
                                         state: {

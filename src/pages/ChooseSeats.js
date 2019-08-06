@@ -14,7 +14,7 @@ export default class ChooseSeats extends React.Component {
 		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid rgb(105, 105, 105)', margin: 10, float: 'left', background: 'rgb(105, 105, 105)', display: 'flex', justifyContent: 'center', color: 'rgb(105, 105, 105)'};
 		this.spaceStyle = {width: 25, height: 25, margin: 10, float: 'left', border: '1px solid rgba(0, 0, 0, 0)'};
 		
-		const tickets = _.sum(_.map(props.tickets, 'tickets'));
+		const tickets = _.sum(_.map(props.tickets, ticket => (ticket.type === 'family') ? 4 : 1));
 
 		this.state = {
 			seats: [],
@@ -115,7 +115,7 @@ export default class ChooseSeats extends React.Component {
 								</div>
 						);
 					})}
-					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats}}}><button type='button' className="confbutton">Confirm Booking</button></Link>
+					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats , tickets: this.props.location.state.tickets}}}><button type='button' className="confbutton">Confirm Booking</button></Link>
 				</div>
 			</div>
 		);

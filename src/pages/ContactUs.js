@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import axios from 'axios';
 import '../ContactUs.css';
 import '../homepage.css';
 import Carousel from 'react-bootstrap/Carousel';
@@ -7,62 +8,94 @@ import Contact1 from '../assets/Contact1.jpg';
 import Contact2 from '../assets/Contact2.jpg';
 import Contact3 from '../assets/Contact3.jpg';
 
-const ContactUs = () => {
-  return (
-      <div className="ContactPadding">
+export default class ContactUs extends React.Component {
+  constructor() {
+    super();
+  this.state = {
+    name: "",
+    email: "",
+    subject: "",
+    yourMessage: "",
+  };
+}
+
+  onChange = (e) => {
+    this.setState({[e.target.name]: e.target.value});
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, subject, yourMessage } = this.state;
+    axios.post('http://localhost:8000/contactus', { name, email, subject, yourMessage })
+      .then((result) => {
+        console.log(result);
+      });
+  }
+   
+  render() {
+    const {name, email, subject, yourMessage} = this.state;
+    return (
+        <div className="ContactPadding">
     <MDBContainer>
       <MDBRow>
         <MDBCol md="5">
-          <form action="MAILTO:klaus_dias1@hotmail.co.uk" method="post" enctype="text/plain">
-            <h1>Contact Us</h1>
-            <label htmlFor="defaultFormContactNameEx" className="grey-text">
+      <form onSubmit={this.onSubmit}>
+      <h1>Contact Us</h1>
+      <label htmlFor="defaultFormContactNameEx" className="grey-text">
               Your name
             </label>
-            <input
-              type="text"
-              id="defaultFormContactNameEx"
-              className="form-control"
-            />
-            
-            <label htmlFor="defaultFormContactEmailEx" className="grey-text">
-              Your email
+        <input
+          name="name"
+          placeholder="Your Full Name"
+          className="form-control"
+          value={this.state.name}
+          onChange={this.onChange}
+          required
+        />
+        <br />
+        <label htmlFor="defaultFormContactNameEx" className="grey-text">
+              Your Email
             </label>
-            <input
-              type="email"
-              id="defaultFormContactEmailEx"
-              className="form-control"
-            />
-            
-            <label
-              htmlFor="defaultFormContactSubjectEx"
-              className="grey-text"
-            >
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          className="form-control"
+          value={this.state.email}
+          onChange={this.onChange}
+          required
+        />
+        <br />
+        <label htmlFor="defaultFormContactNameEx" className="grey-text">
               Subject
             </label>
-            <input
-              type="text"
-              id="defaultFormContactSubjectEx"
-              className="form-control"
-            />
-            
-            <label
-              htmlFor="defaultFormContactMessageEx"
-              className="grey-text"
-            >
-              Your message
+        <input
+          name="subject"
+          placeholder="Query Subject"
+          className="form-control"
+          value={this.state.subject}
+          onChange={this.onChange}
+          required
+        />
+        <br />
+        <label htmlFor="defaultFormContactNameEx" className="grey-text">
+              Your Message
             </label>
-            <textarea
-              type="text"
-              id="defaultFormContactMessageEx"
-              className="form-control"
-              rows="3"/>
-            <div>
-                <br></br>
-            <button type="button" className="DirButton1">SUBMIT</button>
-            </div>
-          </form>
-        </MDBCol>
-        <div className="Cimage">
+        <input
+          name="yourMessage"
+          placeholder="Message"
+          className="form-control"
+          value={this.state.yourMessage}
+          onChange={this.onChange}
+          required
+        />
+        <div>
+        <br />
+        <button className="DirButton1">Submit</button>
+        </div>
+      </form>
+      </MDBCol>
+      <div className="Cimage">
                 <Carousel style={{height: '430px', width:'700px'}} className="caro1">
                     <Carousel.Item>
                         <img
@@ -98,11 +131,10 @@ const ContactUs = () => {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-</div>
+                </div>
       </MDBRow>
     </MDBContainer>
     </div>
   );
+    }
 }
-
-export default ContactUs;

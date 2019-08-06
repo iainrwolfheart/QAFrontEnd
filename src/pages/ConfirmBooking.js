@@ -33,6 +33,7 @@ export default class ConfirmBooking extends React.Component {
 			seatIds: seatIds,
 			totalPrice: totalPrice,
 			paid: false,
+			cancelled: false,
 		}).then(response => {
 			const id = response.data.id;
 
@@ -43,8 +44,6 @@ export default class ConfirmBooking extends React.Component {
 	}
 
 	handleCreateBooking(data, actions) {
-		this.saveToDatabase();
-
 		const totalPrice = _.sum(_.map(this.props.location.state.tickets, (ticketType) => (ticketType.tickets * ticketType.price)));
 
 		return actions.order.create({
@@ -56,13 +55,14 @@ export default class ConfirmBooking extends React.Component {
 		});
 	}
 
-	handleSuccessfulPayment(data, actions) {
+	handleSuccessfulPayment({data, actions}) {
 		actions.order.capture().then(function (details) {
-			axios.put('http://localhost:8000/bookings/' + this.state.bookingID, {
+			axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
 				firstName: details.payer.name.given_name,
 				lastName: details.payer.name.surname,
 				email: details.payer.email,
 				paid: true,
+				cancelled: false,
 			});
 
 			this.setState({
@@ -72,24 +72,22 @@ export default class ConfirmBooking extends React.Component {
 	}
 
 	handleCancelledPayment(data, actions) {
-		actions.order.capture().then(function (details) {
-			axios.put('http://localhost:8000/bookings/' + this.state.bookingID, {
-				firstName: details.payer.name.given_name,
-				lastName: details.payer.name.surname,
-				email: details.payer.email,
-				paid: false,
-				cancelled: true,
-			});
+		axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
+			firstName: '',
+			lastName: '',
+			email: '',
+			paid: false,
+			cancelled: true,
+		});
 
-			this.setState({
-				paymentCancelled: true,
-			});
+		this.setState({
+			paymentCancelled: true,
 		});
 	}
 
 	render() {
 		const {film, seats, showing, tickets} = this.props.location.state;
-		const seatIds = _.flatMap(this.props.location.state.seats, (row) =>
+		const seatIds = _.flatMap(seats, (row) =>
 			_.map(row.filter(seat => seat.selected === true), seat => seat.location)
 		);
 
@@ -129,8 +127,8 @@ export default class ConfirmBooking extends React.Component {
 				<PayPalSDKWrapper currency="GBP" clientId="AQtbSu0EwyTrNloFld2CCjnI-pIg3EQ7nAycqL3d0cXYKr7y7MPnPl10nlkAbn_Vc3jiq20o5bRuKefS">
 					<SmartPaymentButtons
 						createOrder={(data, actions) => this.handleCreateBooking(data, actions)}
-						onApprove={(data, actions) => this.handleSuccessfulPayment(data, actions)}
-						onCancel={(data, actions) => this.handleCancelledPayment(data, actions)}
+						onApprove={this.handleSuccessfulPayment}
+						onCancel={this.handleCancelledPayment}
 					/>
 				</PayPalSDKWrapper>
 			</div>

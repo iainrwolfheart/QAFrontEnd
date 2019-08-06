@@ -1,41 +1,70 @@
 import React from 'react';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 export default class ChooseTickets extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
-			adult: {tickets: 0, price: 9.50},
-			child: {tickets: 0, price: 3.50},
-			family: {tickets: 0, price: 15.00},
-			senior: {tickets: 0, price: 4.00},
-			student: {tickets: 0, price: 5.00},
+			adult: { tickets: 0, price: 9.50 },
+			child: { tickets: 0, price: 3.50 },
+			family: { tickets: 0, price: 15.00 },
+			senior: { tickets: 0, price: 4.00 },
+			student: { tickets: 0, price: 5.00 },
 		}
 
 		this.updateNumberOfTickets = this.updateNumberOfTickets.bind(this);
 		this.incrementNumberOfTickets = this.incrementNumberOfTickets.bind(this);
 		this.decrementNumberOfTickets = this.decrementNumberOfTickets.bind(this);
+		this.handleProgressBooking = this.handleProgressBooking.bind(this);
 	}
 
 	updateNumberOfTickets(event) {
-		this.setState({ [event.target.name]: { ...this.state[event.target.name], tickets: event.target.value} });
+		this.setState({ [event.target.name]: { ...this.state[event.target.name], tickets: event.target.value } });
 	}
 
 	incrementNumberOfTickets(event) {
-		this.setState({ [event.target.name]: { ...this.state[event.target.name], tickets: this.state[event.target.name].tickets + 1} });
+		this.setState({ [event.target.name]: { ...this.state[event.target.name], tickets: this.state[event.target.name].tickets + 1 } });
 	}
 
 	decrementNumberOfTickets(event) {
-		this.setState({ [event.target.name]: { ...this.state[event.target.name], tickets: this.state[event.target.name].tickets !== 0 ? this.state[event.target.name].tickets - 1 : 0} });
+		this.setState({ [event.target.name]: { ...this.state[event.target.name], tickets: this.state[event.target.name].tickets !== 0 ? this.state[event.target.name].tickets - 1 : 0 } });
+	}
+
+	handleProgressBooking() {
+		const { history } = this.props;
+
+		const totalPrice = _.sum(_.map(this.state, (ticketType) => (ticketType.tickets * ticketType.price)));
+
+		axios.post('http://localhost:8000/bookings', {
+			firstName: '',
+			lastName: '',
+			showingId: this.props.location.state.showing.id,
+			seatIds: [],
+			totalPrice: totalPrice,
+			paid: false,
+			cancelled: false,
+		}).then(response => {
+			this.props.updateTickets(this.state);
+			
+			const id = response.data.id;
+
+			const location = {
+				pathname: '/book/chooseseats/' + this.props.match.params.filmId + '/' + this.props.match.params.showingId,
+				state: { film: this.props.location.state.film, showing: this.props.location.state.showing, tickets: this.state, bookingID: id }
+			}
+	
+			return history.push(location);
+		});
 	}
 
 	render() {
 		return (
 			<div>
 				Tickets
-				{ _.keys(this.state).map((ticketType) =>
+				{_.keys(this.state).map((ticketType) =>
 					<div key={ticketType}>
 						<h2>{_.startCase(ticketType)}</h2>
 						<h3>{this.state[ticketType].price}</h3>
@@ -47,7 +76,7 @@ export default class ChooseTickets extends React.Component {
 						}
 					</div>
 				)}
-				<Link to={{pathname: '/book/chooseseats/' + this.props.match.params.filmId + '/' + this.props.match.params.showingId, state: {film: this.props.location.state.film, showing: this.props.location.state.showing, tickets: this.state}}} onClick={() => this.props.updateTickets(this.state)}><button type='button'>Book Now</button></Link>
+				<button type='button' onClick={this.handleProgressBooking}>Book Now</button>
 			</div>
 		);
 	}

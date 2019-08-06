@@ -1,0 +1,38 @@
+.booknow{
+    background-color: rgb(175, 0, 0);
+    border: rgb(175, 0, 0);
+    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: white;
+    outline: none;
+}
+
+.moreinfo{
+    background-color: rgb(175, 0, 0);
+    border: rgb(175, 0, 0);
+    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: white;
+    
+}
+
+.booknow:hover {
+    background-color: rgb(207, 0 ,0);
+    outline: none;
+}
+
+.moreinfo:hover {
+    background-color: rgb(207, 0 ,0);
+    outline: none;
+}
+
+.center{
+margin-left: 72px;
+padding-top: 140px;
+}

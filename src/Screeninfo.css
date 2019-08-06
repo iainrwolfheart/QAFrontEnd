@@ -57,18 +57,24 @@
 
 .screen1 {
     display: block;
-    margin-left: 100px;
-    margin-top: 50px;
+    margin-left: 120px;
+    margin-top: 20px;
 }
 
 .cinemascreen1 {
     display: block;
     margin-left: 750px;
-    margin-top: -400px;
+    margin-top: -390px;
 }
 
 .cinemascreen2 {
     display: block;
     margin-left: 750px;
-    margin-top: -400px;
+    margin-top: -390px;
+}
+
+.screen2 {
+    display: block;
+    margin-left: 120px;
+    margin-top: 30px;
 }

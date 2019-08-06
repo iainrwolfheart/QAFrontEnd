@@ -58,8 +58,9 @@ let alldates = `${year}${separator}${month<10?`0${month}`:`${month}`}${separator
     e.preventDefault();
     // get our form data out of state
     const { uname, movie, comm, rate, datepost } = this.state;
-
-    axios.post(`http://localhost:8000/discussion`, { userName:uname, movieName:movie, comments:comm, rating:rate, datePosted:datepost })
+    var Filter = require('bad-words'),
+    filter = new Filter();
+    axios.post(`http://localhost:8000/discussion`, { userName:filter.clean(uname), movieName:filter.clean(movie), comments:filter.clean(comm), rating:rate, datePosted:datepost })
       .then((result) => {
         
 

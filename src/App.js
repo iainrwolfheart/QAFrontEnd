@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import './pages/listings.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,6 +13,8 @@ import ListingsPage from './pages/ListingsPage';
 import TicketBooking from './pages/TicketBooking';
 import certifications from './pages/certifications';
 import ListingsPage1 from './pages/upcomings';
+import ContactUs from './pages/ContactUs';
+import GettingHere from './pages/GettingHere';
 
 
 function App() {

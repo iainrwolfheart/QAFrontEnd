@@ -53,12 +53,7 @@ export default class ListingsPage1 extends React.Component {
                                     <br></br>
                                     <h1>{item.title}</h1>
                                     <h3>Directed by: {item.director}</h3>
-<<<<<<< HEAD
                                     <h3>Release Date: {relDate.format('DD/MM/YYYY')}, Cert: {item.cert}</h3>
-=======
-                                    <h3>Release Date: {relDate.format('DD/MM/YYYY')}, cert: {item.cert}</h3>
-                                    {/* <Link to={'chooseshowing/' + item.id}><button className = "booknow" type='button'>Book Now</button></Link> */}
->>>>>>> 6770f15be4ae40bcb83815bdb627e60bc297798f
                                     <Link to={{
                                         pathname: `film/${item.id}`,
                                         state: {

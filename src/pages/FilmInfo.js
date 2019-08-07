@@ -8,10 +8,18 @@ export default class FilmInfo extends React.Component {
         super(props);
 
         const { film } = props.location.state;
-        console.log('FILM: ', film);
+        // console.log('FILM: ', film);
 
         this.state = {
             film: film
+        }
+    }
+
+    componentDidUpdate() {
+        if(this.state.film !== this.props.location.state.film) {
+            this.setState({
+                film: this.props.location.state.film
+            });
         }
     }
 

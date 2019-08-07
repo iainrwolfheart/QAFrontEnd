@@ -15,7 +15,7 @@ export default class ChooseShowing extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://10.154.0.3:8000/film/' + this.props.match.params.filmId + '/showings')
+		axios.get('http://localhost:8000/film/' + this.props.match.params.filmId + '/showings')
 			.then(response => this.setState({ showings: response.data }));
 	}
 

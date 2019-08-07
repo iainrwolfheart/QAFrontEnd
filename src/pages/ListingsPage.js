@@ -19,7 +19,7 @@ export default class ListingsPage extends React.Component {
     }
 
     componentDidMount() {
-                 axios.get(`http://10.154.0.3:8000/films`)
+                 axios.get(`http://localhost:8000/films`)
                  .then(response => {
                      this.setState({
                          films: response.data,

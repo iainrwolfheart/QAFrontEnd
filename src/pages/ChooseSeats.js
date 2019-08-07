@@ -38,8 +38,8 @@ export default class ChooseSeats extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://10.154.0.3:8000/screens/' + this.props.location.state.showing.screenId).then(response => {
-			axios.get('http://10.154.0.3:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
+		axios.get('http://localhost:8000/screens/' + this.props.location.state.showing.screenId).then(response => {
+			axios.get('http://localhost:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
 				const bookedSeats = _.flatMap(_.map(bookingsResponse.data, 'seatIds'), seatIds => seatIds);
 				const rows = response.data.seats.map(row => row.map(seat => ({...JSON.parse(seat), selected: false, booked: _.includes(bookedSeats, JSON.parse(seat).location)})));
 				this.setState({
@@ -70,7 +70,7 @@ export default class ChooseSeats extends React.Component {
 				}
 			}));
 
-			axios.get('http://10.154.0.3:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
+			axios.get('http://localhost:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
 				const bookedSeats = _.flatMap(_.map(bookingsResponse.data, 'seatIds'), seatIds => seatIds);
 				const seatBooked = _.includes(bookedSeats, seat);
 				
@@ -95,7 +95,7 @@ export default class ChooseSeats extends React.Component {
 						_.map(row.filter(seat => seat.selected === true), seat => seat.location)
 					);
 
-					axios.post('http://10.154.0.3:8000/bookings/' + this.props.location.state.bookingID + '/setseats', {
+					axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/setseats', {
 						seatIds: seatIds
 					});
 				}

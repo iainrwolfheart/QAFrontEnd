@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import './pages/listings.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,42 +13,38 @@ import ListingsPage from './pages/ListingsPage';
 import TicketBooking from './pages/TicketBooking';
 import certifications from './pages/certifications';
 import ListingsPage1 from './pages/upcomings';
+import ContactUs from './pages/ContactUs';
+import GettingHere from './pages/GettingHere';
+
 
 function App() {
-  return (
-    <div className="bg">
-		<head>
-		<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-  crossorigin="anonymous"
-/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet"></link>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-		</head>
-		<div className="Header">
-        <AppNavbar/>
-		</div>
-		<div className="Content">
-			<Router>
-				<Route exact path="/" component={Home} />
-				<Route exact path="/about" component={About} />
-				<Route exact path="/screens" component={Screens} />
-				<Route exact path="/placestogo" component={Placestogo} />
-				<Route exact path="/discussionsboard" component={discussionsboard} />
-				<Route exact path="/upcomings" component={ListingsPage1} />
-				<Route path="/listings" component={ListingsPage} />
-				<Route exact path="/film/:filmId" component={FilmInfo} />
-				<Route path="/book" component={TicketBooking} />
-				<Route exact path="/certifications" component={certifications} />
+	return (
+		<div className="bg">
+				<Router>
+				<div className="Header">
+					<AppNavbar />
+				</div>
+				<div className="Content">
+					<Route exact path="/" component={Home} />
+					<Route exact path="/about" component={About} />
+					<Route exact path="/screens" component={Screens} />
+					<Route exact path="/placestogo" component={Placestogo} />
+					<Route exact path="/discussionsboard" component={discussionsboard} />
+					<Route exact path="/upcomings" component={ListingsPage1} />
+					<Route path="/listings" component={ListingsPage} />
+					<Route exact path="/film/:filmId" component={FilmInfo} />
+					<Route exact path="/certifications" component={certifications} />
+					<Route path="/book" component={TicketBooking} />
+					<Route exact path="/contactus" component={ContactUs} />
+					<Route exact path="/gettinghere" component={GettingHere} />
+				
+				</div>
+				<div className="Footer">
+						<FooterPage />
+					</div>
 			</Router>
 		</div>
-		<div className="Footer">
-        <FooterPage/>
-		</div>
-    </div>
-  );
-}
-
+			);
+		}
+		
 export default App;

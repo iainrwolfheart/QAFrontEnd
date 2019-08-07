@@ -3,14 +3,15 @@ import update from 'immutability-helper';
 import _ from 'lodash';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import '../booking.css';
 
 export default class ChooseSeats extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.seatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left', display: 'flex', justifyContent: 'center'};
-		this.selectedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #000', margin: 10, float: 'left', background: '#000', display: 'flex', justifyContent: 'center', color: '#FFFFFF'};
-		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid #b2bec3', margin: 10, float: 'left', background: '#b2bec3', display: 'flex', justifyContent: 'center',};
+		this.seatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid rgb(175, 0, 0)', margin: 10, float: 'left', display: 'flex', justifyContent: 'center', color: 'rgb(175, 0, 0)'};
+		this.selectedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid rgb(207, 0, 0)', margin: 10, float: 'left', background: 'rgb(207, 0, 0)', display: 'flex', justifyContent: 'center'};
+		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid rgb(105, 105, 105)', margin: 10, float: 'left', background: 'rgb(105, 105, 105)', display: 'flex', justifyContent: 'center', color: 'rgb(105, 105, 105)'};
 		this.spaceStyle = {width: 25, height: 25, margin: 10, float: 'left', border: '1px solid rgba(0, 0, 0, 0)'};
 		
 		const tickets = _.sum(_.map(props.tickets, (ticket, key) => (key === 'family') ? ticket.tickets * 4 : ticket.tickets));
@@ -133,7 +134,7 @@ export default class ChooseSeats extends React.Component {
 										{ seatRow.map(seat => {
 											if (seat.type == 'seat') {
 												if (!seat.booked) {
-													return <div key={row.toUpperCase()} data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected}>{seat.location.substring(1)}</div>
+													return <div key={row.toUpperCase()} data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected} className="seat">{seat.location.substring(1)}</div>
 												} else {
 													return <div key={row.toUpperCase()} data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.bookedSeatStyle}>{seat.location.substring(1)}</div>
 												}

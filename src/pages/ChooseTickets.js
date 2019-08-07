@@ -1,7 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
-import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import '../booking.css';
 
 export default class ChooseTickets extends React.Component {
 	constructor(props) {
@@ -62,21 +63,20 @@ export default class ChooseTickets extends React.Component {
 
 	render() {
 		return (
-			<div>
-				Tickets
-				{_.keys(this.state).map((ticketType) =>
-					<div key={ticketType}>
+			<div className="choosetickets">
+				{ _.keys(this.state).map((ticketType) =>
+					<div key={ticketType} className="tickettype">
 						<h2>{_.startCase(ticketType)}</h2>
-						<h3>{this.state[ticketType].price}</h3>
-						<input type="button" name={ticketType} value="-" onClick={this.decrementNumberOfTickets} />
-						<input type="text" name={ticketType} value={this.state[ticketType].tickets} onChange={this.updateNumberOfTickets} />
-						<input type="button" name={ticketType} value="+" onClick={this.incrementNumberOfTickets} />
+						<h3>£{this.state[ticketType].price}</h3>
+						<input type="button" name={ticketType} value="-" onClick={this.decrementNumberOfTickets} className="minus"/>
+						<input type="text" name={ticketType} value={this.state[ticketType].tickets} onChange={this.updateNumberOfTickets} className="ticketamount"/>
+						<input type="button" name={ticketType} value="+" onClick={this.incrementNumberOfTickets} className="plus"/>
 						{this.state[ticketType].tickets > 0 &&
-							<div>{this.state[ticketType].tickets * this.state[ticketType].price}</div>
+							<div className="price">Price: £{this.state[ticketType].tickets * this.state[ticketType].price}</div>
 						}
 					</div>
 				)}
-				<button type='button' onClick={this.handleProgressBooking}>Book Now</button>
+				<button type='button' className="bookbutton" onClick={this.handleProgressBooking}>Book Now</button>
 			</div>
 		);
 	}

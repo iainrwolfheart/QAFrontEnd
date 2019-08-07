@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import SmartPaymentButtons, { PayPalSDKWrapper } from 'react-smart-payment-buttons';
+import '../booking.css';
 
 
 export default class ConfirmBooking extends React.Component {
@@ -104,22 +105,22 @@ export default class ConfirmBooking extends React.Component {
 		}
 
 		return (
-			<div>
+			<div className="confinfo">
 				<style dangerouslySetInnerHTML={{__html: `
 					.Sidebar { display: none }
 				`}} />
 				<h1>Your booking</h1>
 				<img src={film.portImage} />
-				<h2>{film.title}</h2>
+				<h2 className="conftitle">{film.title}</h2>
 				<h3>{film.cast}</h3>
 				<h4>{film.description}</h4>
 				<h4>{film.runtime}</h4>
-				<h4>{film.cert}</h4>
+				<h4>Cert: {film.cert}</h4>
 				<h4>Showing: {showing.time}</h4>
 				<h4>Tickets:</h4>
 				{ _.keys(tickets).map(ticketType => {
 					return tickets[ticketType].tickets > 0 ?
-						<div>{ticketType} - {tickets[ticketType].tickets} - {tickets[ticketType].tickets * tickets[ticketType].price}</div>
+						<div>{ticketType} - {tickets[ticketType].tickets} - £{tickets[ticketType].tickets * tickets[ticketType].price}</div>
 					:
 						<div></div>
 				})}

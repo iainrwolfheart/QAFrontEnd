@@ -40,8 +40,6 @@ const FooterPage = () => {
             <a href="/certifications">Certifications</a>
             <br></br>
             <a href="/placestogo">Places To Go</a>
-            <br></br>
-            <a href="/upcomings">Future Listings</a>
           </MDBCol>
           <MDBCol md="3">
               <h5 className="title">Socials</h5>
@@ -56,7 +54,7 @@ const FooterPage = () => {
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.QACinemas.com"> QACinemas.com </a>
+          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.QACinemas.co.uk"> QACinemas.co.uk </a>
         </MDBContainer>
       </div>
     </MDBFooter>

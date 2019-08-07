@@ -27,7 +27,7 @@ export default class ContactUs extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { name, email, subject, yourMessage } = this.state;
-    axios.post('http://35.246.125.69:8000/contactus', { name, email, subject, yourMessage })
+    axios.post('http://10.154.0.3:8000/contactus', { name, email, subject, yourMessage })
       .then((result) => {
         console.log(result);
       });

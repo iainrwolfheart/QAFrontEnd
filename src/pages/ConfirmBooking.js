@@ -27,7 +27,7 @@ export default class ConfirmBooking extends React.Component {
 			_.map(row.filter(seat => seat.selected === true), seat => seat.location)
 		);
 
-		axios.post('http://35.246.125.69:8000/bookings', {
+		axios.post('http://10.154.0.3:8000/bookings', {
 			firstName: '',
 			lastName: '',
 			showingId: this.props.location.state.showing.id,
@@ -58,7 +58,7 @@ export default class ConfirmBooking extends React.Component {
 
 	handleSuccessfulPayment({data, actions}) {
 		actions.order.capture().then(function (details) {
-			axios.post('http://35.246.125.69:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
+			axios.post('http://10.154.0.3:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
 				firstName: details.payer.name.given_name,
 				lastName: details.payer.name.surname,
 				email: details.payer.email,
@@ -73,7 +73,7 @@ export default class ConfirmBooking extends React.Component {
 	}
 
 	handleCancelledPayment(data, actions) {
-		axios.post('http://35.246.125.69:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
+		axios.post('http://10.154.0.3:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
 			firstName: '',
 			lastName: '',
 			email: '',

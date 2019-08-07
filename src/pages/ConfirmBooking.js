@@ -56,7 +56,8 @@ export default class ConfirmBooking extends React.Component {
 		});
 	}
 
-	handleSuccessfulPayment({data, actions}) {
+	handleSuccessfulPayment(data, actions) {
+		console.log('SUCCESSFUL PAYMENT');
 		actions.order.capture().then(function (details) {
 			axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
 				firstName: details.payer.name.given_name,
@@ -128,7 +129,19 @@ export default class ConfirmBooking extends React.Component {
 				<PayPalSDKWrapper currency="GBP" clientId="AQtbSu0EwyTrNloFld2CCjnI-pIg3EQ7nAycqL3d0cXYKr7y7MPnPl10nlkAbn_Vc3jiq20o5bRuKefS">
 					<SmartPaymentButtons
 						createOrder={(data, actions) => this.handleCreateBooking(data, actions)}
-						onApprove={this.handleSuccessfulPayment}
+						onApprove={(data, actions) => actions.order.capture().then(details => {
+							axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
+								firstName: details.payer.name.given_name,
+								lastName: details.payer.name.surname,
+								email: details.payer.email,
+								paid: true,
+								cancelled: false,
+							});
+
+							this.setState({
+								paymentSuccessful: true,
+							});
+						})}
 						onCancel={this.handleCancelledPayment}
 					/>
 				</PayPalSDKWrapper>

@@ -24,6 +24,8 @@ export default class ChooseSeats extends React.Component {
 
 		this.toggleSeatSelected = this.toggleSeatSelected.bind(this);
 
+		console.log('BOOKING ID', props.location.state.bookingID);
+
 
 
 		// x.seats.map((row, rowIndex) => row.map((seat, seatIndex) => {
@@ -38,8 +40,8 @@ export default class ChooseSeats extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8000/screens/' + this.props.location.state.showing.screenId).then(response => {
-			axios.get('http://localhost:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
+		axios.get('http://35.246.125.69:8000/screens/' + this.props.location.state.showing.screenId).then(response => {
+			axios.get('http://35.246.125.69:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
 				const bookedSeats = _.flatMap(_.map(bookingsResponse.data, 'seatIds'), seatIds => seatIds);
 				const rows = response.data.seats.map(row => row.map(seat => ({...JSON.parse(seat), selected: false, booked: _.includes(bookedSeats, JSON.parse(seat).location)})));
 				this.setState({
@@ -70,7 +72,7 @@ export default class ChooseSeats extends React.Component {
 				}
 			}));
 
-			axios.get('http://localhost:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
+			axios.get('http://35.246.125.69:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
 				const bookedSeats = _.flatMap(_.map(bookingsResponse.data, 'seatIds'), seatIds => seatIds);
 				const seatBooked = _.includes(bookedSeats, seat);
 				
@@ -95,7 +97,7 @@ export default class ChooseSeats extends React.Component {
 						_.map(row.filter(seat => seat.selected === true), seat => seat.location)
 					);
 
-					axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/setseats', {
+					axios.post('http://35.246.125.69:8000/bookings/' + this.props.location.state.bookingID + '/setseats', {
 						seatIds: seatIds
 					});
 				}
@@ -146,7 +148,7 @@ export default class ChooseSeats extends React.Component {
 								</div>
 						);
 					})}
-					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats, tickets: this.props.location.state.tickets, bookingID: this.props.location.state.bookingID}}}><button type='button'>Confirm Booking</button></Link>
+					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats, tickets: this.props.location.state.tickets, bookingID: this.props.location.state.bookingID}}}><button type='button' class='confbutton'>Confirm Booking</button></Link>
 				</div>
 			</div>
 		);

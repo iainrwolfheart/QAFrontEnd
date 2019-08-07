@@ -18,7 +18,7 @@ export default class ListingsPage1 extends React.Component {
     }
 
     componentDidMount() {
-                 axios.get(`http://35.246.125.69/films`)
+                 axios.get(`http://35.246.125.69:8000/films`)
                  .then(response => {
                      this.setState({
                          films: response.data,

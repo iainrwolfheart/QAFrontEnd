@@ -33,7 +33,7 @@ let alldates = `${year}${separator}${month<10?`0${month}`:`${month}`}${separator
 }
 
     componentDidMount() {
-      axios.get(`http://35.246.125.69/discussion`)
+      axios.get(`http://35.246.125.69:8000/discussion`)
       .then(response => {
           this.setState({
               discussion: response.data,
@@ -60,7 +60,7 @@ let alldates = `${year}${separator}${month<10?`0${month}`:`${month}`}${separator
     const { uname, movie, comm, rate, datepost } = this.state;
     var Filter = require('bad-words'),
     filter = new Filter();
-    axios.post(`http://35.246.125.69/discussion`, { userName:filter.clean(uname), movieName:filter.clean(movie), comments:filter.clean(comm), rating:rate, datePosted:datepost })
+    axios.post(`http://35.246.125.69:8000/discussion`, { userName:filter.clean(uname), movieName:filter.clean(movie), comments:filter.clean(comm), rating:rate, datePosted:datepost })
       .then((result) => {
         
 

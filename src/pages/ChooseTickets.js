@@ -49,6 +49,7 @@ export default class ChooseTickets extends React.Component {
 			cancelled: false,
 		}).then(response => {
 			this.props.updateTickets(this.state);
+			console.log(response.data);
 			
 			const id = response.data.id;
 

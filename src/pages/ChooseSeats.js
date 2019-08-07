@@ -24,6 +24,8 @@ export default class ChooseSeats extends React.Component {
 
 		this.toggleSeatSelected = this.toggleSeatSelected.bind(this);
 
+		console.log('BOOKING ID', props.location.state.bookingID);
+
 
 
 		// x.seats.map((row, rowIndex) => row.map((seat, seatIndex) => {

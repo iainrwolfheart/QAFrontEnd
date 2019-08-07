@@ -51,7 +51,7 @@ render(){
   const { search } = this.state;
     return(
     <Navbar bg="dark" variant="dark" className="fixed-top">
-      <a href="http://localhost:3000/">
+      <a href="http://35.246.125.69:3000/">
     <img src={logo} class="logostyle"/></a>
     <Nav className="mr-auto">
       <Nav.Link className="navhov" href="/listings">Current Listings</Nav.Link>

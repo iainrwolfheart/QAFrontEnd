@@ -148,7 +148,7 @@ export default class ChooseSeats extends React.Component {
 								</div>
 						);
 					})}
-					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats, tickets: this.props.location.state.tickets, bookingID: this.props.location.state.bookingID}}}><button type='button'>Confirm Booking</button></Link>
+					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats, tickets: this.props.location.state.tickets, bookingID: this.props.location.state.bookingID}}}><button type='button' class='confbutton'>Confirm Booking</button></Link>
 				</div>
 			</div>
 		);

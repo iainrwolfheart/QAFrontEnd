@@ -37,10 +37,8 @@ export default class ListingsPage1 extends React.Component {
                     const cutOff = moment("2019-08-18", "YYYY-MM-DD");
                     const relDate = moment(item.releaseDate, "YYYY-MM-DD");
                     const futList = relDate.isAfter(cutOff);
-                    const curList = relDate.isBefore(cutOff);
 
-                    if (futList) {
-                    return (
+                    return futList && (
                         
                         <Container key={item.id}>
                             <Row>
@@ -53,8 +51,7 @@ export default class ListingsPage1 extends React.Component {
                                     <br></br>
                                     <h1>{item.title}</h1>
                                     <h3>Directed by: {item.director}</h3>
-                                    <h3>Release Date: {relDate.format('DD/MM/YYYY')}, cert: {item.cert}</h3>
-                                    <Link to={'chooseshowing/' + item.id}><button className = "booknow" type='button'>Book Now</button></Link>
+                                    <h3>Release Date: {relDate.format('DD/MM/YYYY')}, Cert: {item.cert}</h3>
                                     <Link to={{
                                         pathname: `film/${item.id}`,
                                         state: {
@@ -66,7 +63,7 @@ export default class ListingsPage1 extends React.Component {
                             </Row>
                         </Container>
                     );
-                }})}
+                })}
             </div>
         )
     }}

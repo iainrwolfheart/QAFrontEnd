@@ -14,7 +14,7 @@ export default class ChooseSeats extends React.Component {
 		this.bookedSeatStyle = {width: 25, height: 25, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, border: '1px solid rgb(105, 105, 105)', margin: 10, float: 'left', background: 'rgb(105, 105, 105)', display: 'flex', justifyContent: 'center', color: 'rgb(105, 105, 105)'};
 		this.spaceStyle = {width: 25, height: 25, margin: 10, float: 'left', border: '1px solid rgba(0, 0, 0, 0)'};
 		
-		const tickets = _.sum(_.map(props.tickets, ticket => (ticket.type === 'family') ? 4 : 1));
+		const tickets = _.sum(_.map(props.tickets, (ticket, key) => (key === 'family') ? ticket.tickets * 4 : ticket.tickets));
 
 		this.state = {
 			seats: [],
@@ -57,7 +57,6 @@ export default class ChooseSeats extends React.Component {
 		const index = this.state.seats[rowIndex].findIndex(object => object.location === seat);
 
 		if ((!this.state.seats[rowIndex][index].selected) && this.state.selectedSeatsCount < this.state.tickets) {
-			console.log('SELECTED:', this.state.seats[rowIndex][index].selected, 'SC:', this.state.selectedSeatsCount, 'T:', this.state.tickets);
 			this.setState((prevState) => update(prevState, {
 				seats: {
 					[rowIndex]: {
@@ -70,6 +69,38 @@ export default class ChooseSeats extends React.Component {
 					$set: (prevState.selectedSeatsCount + 1)
 				}
 			}));
+
+			axios.get('http://localhost:8000/bookings/showing/' + this.props.location.state.showing.id).then(bookingsResponse => {
+				const bookedSeats = _.flatMap(_.map(bookingsResponse.data, 'seatIds'), seatIds => seatIds);
+				const seatBooked = _.includes(bookedSeats, seat);
+				
+				if (seatBooked) {
+					alert('That seat has already been booked. Please choose another.');
+
+					this.setState((prevState) => update(prevState, {
+						seats: {
+							[rowIndex]: {
+								[index]: {
+									$toggle: ['selected'],
+									$toggle: ['booked']
+								}
+							}
+						},
+						selectedSeatsCount: {
+							$set: (prevState.selectedSeatsCount - 1)
+						}
+					}));
+				} else {
+					const seatIds = _.flatMap(this.state.seats, (row) =>
+						_.map(row.filter(seat => seat.selected === true), seat => seat.location)
+					);
+
+					axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/setseats', {
+						seatIds: seatIds
+					});
+				}
+
+			});
 		} else if (this.state.seats[rowIndex][index].selected) {
 			this.setState((prevState) => update(prevState, {
 				seats: {
@@ -103,19 +134,19 @@ export default class ChooseSeats extends React.Component {
 										{ seatRow.map(seat => {
 											if (seat.type == 'seat') {
 												if (!seat.booked) {
-													return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected} className="seat">{seat.location.substring(1)}</div>
+													return <div key={row.toUpperCase()} data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={seat.selected ? this.selectedSeatStyle : this.seatStyle} onClick={this.toggleSeatSelected} className="seat">{seat.location.substring(1)}</div>
 												} else {
-													return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.bookedSeatStyle}>{seat.location.substring(1)}</div>
+													return <div key={row.toUpperCase()} data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.bookedSeatStyle}>{seat.location.substring(1)}</div>
 												}
 											} else if (seat.type == 'space') {
-												return <div data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.spaceStyle}></div>
+												return <div key={row.toUpperCase()} data-row={row.toUpperCase()} data-seat={seat.location} data-selected={seat.selected} style={this.spaceStyle}></div>
 											}
 										})}
 									</div>
 								</div>
 						);
 					})}
-					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats , tickets: this.props.location.state.tickets}}}><button type='button' className="confbutton">Confirm Booking</button></Link>
+					<Link to={{pathname: '/book/confirm/', state: {film: this.props.location.state.film, showing: this.props.location.state.showing, seats: this.state.seats, tickets: this.props.location.state.tickets, bookingID: this.props.location.state.bookingID}}}><button type='button'>Confirm Booking</button></Link>
 				</div>
 			</div>
 		);

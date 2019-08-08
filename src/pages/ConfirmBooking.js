@@ -56,7 +56,8 @@ export default class ConfirmBooking extends React.Component {
 		});
 	}
 
-	handleSuccessfulPayment({data, actions}) {
+	handleSuccessfulPayment(data, actions) {
+		console.log('SUCCESSFUL PAYMENT');
 		actions.order.capture().then(function (details) {
 			axios.post('http://3.8.61.204:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
 				firstName: details.payer.name.given_name,
@@ -94,13 +95,41 @@ export default class ConfirmBooking extends React.Component {
 
 		if (this.state.paymentSuccessful) {
 			return (
-				<div><h1>Your booking is confirmed!</h1></div>
+				<div className="confbookinfo"><h1>Your booking is confirmed!</h1>
+				<style dangerouslySetInnerHTML={{__html: `
+					.Sidebar { display: none }
+				`}} />
+				<h1>Your Booking</h1>
+				<img src={film.portImage} />
+				<h2 className="conftitle">{film.title}</h2>
+				<h3>{film.cast}</h3>
+				<h4>{film.description}</h4>
+				<h4>{film.runtime}</h4>
+				<h4>Cert: {film.cert}</h4>
+				<h4>Showing: {showing.time}</h4>
+				{ _.keys(tickets).map(ticketType => {
+					return tickets[ticketType].tickets > 0 ?
+						<div>{ticketType} - {tickets[ticketType].tickets} - £{tickets[ticketType].tickets * tickets[ticketType].price}</div>
+					:
+						<div></div>
+				})}
+				<h4>Seats: {seatIds.map((seatID, index) => (index > 0) ? ', ' + seatID : '' + seatID )}</h4>
+				</div>
 			)
 		}
 
 		if (this.state.paymentCancelled) {
 			return (
-				<div><h1>Your booking has been cancelled</h1></div>
+				<div className="confbookinfo"><h1>Your booking has been cancelled</h1><style dangerouslySetInnerHTML={{__html: `
+				.Sidebar { display: none }
+			`}} />
+			<img src={film.portImage} />
+			<h2 className="conftitle">{film.title}</h2>
+			<h3>{film.cast}</h3>
+			<h4>{film.description}</h4>
+			<h4>{film.runtime}</h4>
+			<h4>Cert: {film.cert}</h4>
+			<h4>Showing: {showing.time}</h4></div>
 			)
 		}
 
@@ -128,7 +157,19 @@ export default class ConfirmBooking extends React.Component {
 				<PayPalSDKWrapper currency="GBP" clientId="AQtbSu0EwyTrNloFld2CCjnI-pIg3EQ7nAycqL3d0cXYKr7y7MPnPl10nlkAbn_Vc3jiq20o5bRuKefS">
 					<SmartPaymentButtons
 						createOrder={(data, actions) => this.handleCreateBooking(data, actions)}
-						onApprove={this.handleSuccessfulPayment}
+						onApprove={(data, actions) => actions.order.capture().then(details => {
+							axios.post('http://localhost:8000/bookings/' + this.props.location.state.bookingID + '/confirm', {
+								firstName: details.payer.name.given_name,
+								lastName: details.payer.name.surname,
+								email: details.payer.email,
+								paid: true,
+								cancelled: false,
+							});
+
+							this.setState({
+								paymentSuccessful: true,
+							});
+						})}
 						onCancel={this.handleCancelledPayment}
 					/>
 				</PayPalSDKWrapper>

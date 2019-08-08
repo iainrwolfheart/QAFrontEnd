@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import logo from '../assets/QALogo.png';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
@@ -29,26 +29,32 @@ class AppNavbar extends React.Component{
             isLoaded: true,
         });
     })
-    console.log(this.state.films);
+    //console.log(this.state.films);
 }
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { search, films } = this.state
+    //const { search, films } = this.state
     this.state.films.map(item => {
 
-    if(search==item.title){
-      window.location = `/film/${item.id}`;
-    }})}
+        if(this.state.search==item.title){
+          
+          const location = {
+            pathname: `/film/${item.id}`,
+            state: { film: item }
+          }
+          return this.props.history.push(location);
+        }
+    })
+  }
   
- 
-  onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-    console.log(e);
+  updateSearch = (event) => {
+      this.setState({ search: event.target.value});
+    console.log(event.target.value);
   }
 
 render(){
-  const { search } = this.state;
+  //const { search } = this.state;
     return(
     <Navbar bg="dark" variant="dark" className="fixed-top">
       <a href="http://3.8.61.204:3000/">
@@ -60,11 +66,12 @@ render(){
       <Nav.Link className="navhov" href="/discussionsboard">Discussions Board</Nav.Link>
     </Nav>
     <Form inline className="former" onSubmit={this.onSubmit}>
-      <FormControl type="text" placeholder="Search Term" className="mr-sm-2" onChange={this.onChange} value={search} name="search"/>
+      <FormControl type="text" placeholder="Search Term" className="mr-sm-2" 
+          onChange={this.updateSearch.bind(this)} value={this.state.search} name="search"/>
       <Button variant="" className="navhov" type="submit">Search</Button>
     </Form>
   </Navbar>)
 }
 }
 
-export default AppNavbar
+export default withRouter(AppNavbar);

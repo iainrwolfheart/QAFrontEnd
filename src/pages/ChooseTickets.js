@@ -39,7 +39,7 @@ export default class ChooseTickets extends React.Component {
 
 		const totalPrice = _.sum(_.map(this.state, (ticketType) => (ticketType.tickets * ticketType.price)));
 
-		axios.post('http://localhost:8000/bookings', {
+		axios.post('http://3.8.61.204:8000/bookings', {
 			firstName: '',
 			lastName: '',
 			showingId: this.props.location.state.showing.id,
@@ -49,6 +49,7 @@ export default class ChooseTickets extends React.Component {
 			cancelled: false,
 		}).then(response => {
 			this.props.updateTickets(this.state);
+			console.log(response.data);
 			
 			const id = response.data.id;
 

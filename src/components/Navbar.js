@@ -22,7 +22,7 @@ class AppNavbar extends React.Component{
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/films`)
+    axios.get(`http://3.8.61.204:8000/films`)
     .then(response => {
         this.setState({
             films: response.data,
@@ -57,7 +57,7 @@ render(){
   //const { search } = this.state;
     return(
     <Navbar bg="dark" variant="dark" className="fixed-top">
-      <a href="http://localhost:3000/">
+      <a href="http://3.8.61.204:3000/">
     <img src={logo} class="logostyle"/></a>
     <Nav className="mr-auto">
       <Nav.Link className="navhov" href="/listings">Current Listings</Nav.Link>

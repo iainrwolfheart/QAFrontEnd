@@ -10,7 +10,7 @@
     "immutability-helper": "^3.0.1",
     "lodash": "^4.17.19",
     "mdbreact": "^4.18.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "paypal-checkout": "^4.0.283",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
